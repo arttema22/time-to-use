@@ -66,5 +66,10 @@
     "Are you sure you want to delete this team? Once a team is deleted, all of its resources and data will be permanently deleted.": "Вы уверены, что хотите удалить эту группу? После удаления группы все ее ресурсы и данные будут удалены навсегда.",
     "Articles": "Статьи",
     "More": "Подробнее",
-    "Title": "Название"
+    "Title": "Название",
+    "Slug": "Слаг",
+    "Text": "Содержание",
+    "Description": "Описание",
+    "Keywords": "Ключевые слова",
+    "Thumbnail": "Изображение"
 }

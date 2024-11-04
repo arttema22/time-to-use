@@ -19,9 +19,6 @@ class ArticleIndexPage extends IndexPage
     public function fields(): array
     {
         return [
-            Image::make('thumbnail')
-                ->disk('public')
-                ->dir('articles'),
             Text::make(__('Title'), 'title')->sortable(),
         ];
     }

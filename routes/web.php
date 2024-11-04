@@ -18,4 +18,4 @@ Route::middleware([
 
 
 Route::get('/articles', [ArticleController::class, 'index'])->name('articles');
-Route::get('/article/{id}', [ArticleController::class, 'show'])->name('article-show');
+Route::get('/article/{article:slug}', [ArticleController::class, 'show'])->name('article-show');

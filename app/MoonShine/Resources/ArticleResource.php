@@ -9,7 +9,6 @@ use App\Models\Article;
 use App\MoonShine\Pages\Article\ArticleIndexPage;
 use App\MoonShine\Pages\Article\ArticleFormPage;
 use App\MoonShine\Pages\Article\ArticleDetailPage;
-
 use MoonShine\Resources\ModelResource;
 use MoonShine\Pages\Page;
 
@@ -18,9 +17,27 @@ use MoonShine\Pages\Page;
  */
 class ArticleResource extends ModelResource
 {
+    // Модель данных
     protected string $model = Article::class;
 
-    protected string $title = 'Articles';
+    // Поле сортировки по умолчанию
+    protected string $sortColumn = 'created_at';
+
+    // Тип сортировки по умолчанию
+    protected string $sortDirection = 'ASC';
+
+    // Поле для отображения значений в связях и хлебных крошках
+    public string $column = 'title';
+
+    /**
+     * title
+     * Устанавливает заголовок для ресурса.
+     * @return string
+     */
+    public function title(): string
+    {
+        return __('Articles');
+    }
 
     /**
      * @return list<Page>
@@ -34,7 +51,7 @@ class ArticleResource extends ModelResource
                     ? __('moonshine::ui.edit')
                     : __('moonshine::ui.add')
             ),
-            ArticleDetailPage::make(__('moonshine::ui.show')),
+            //   ArticleDetailPage::make(__('moonshine::ui.show')),
         ];
     }
 
@@ -46,6 +63,22 @@ class ArticleResource extends ModelResource
      */
     public function rules(Model $item): array
     {
-        return [];
+        return [
+            'title' => ['required', 'string', 'min:3'],
+            'slug' => ['required', 'string', 'min:3'],
+            'text' => ['required', 'string', 'min:3'],
+        ];
+    }
+
+    /**
+     * search
+     * Поля для поиска
+     * @return array
+     */
+    public function search(): array
+    {
+        return [
+            'title',
+        ];
     }
 }

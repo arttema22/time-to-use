@@ -12,6 +12,10 @@ use MoonShine\Fields\TinyMce;
 use MoonShine\Fields\Textarea;
 use MoonShine\Pages\Crud\FormPage;
 use MoonShine\Components\MoonShineComponent;
+use MoonShine\Decorations\Block;
+use MoonShine\Decorations\Column;
+use MoonShine\Decorations\Grid;
+use MoonShine\Fields\Slug;
 
 class ArticleFormPage extends FormPage
 {
@@ -21,15 +25,28 @@ class ArticleFormPage extends FormPage
     public function fields(): array
     {
         return [
-            Text::make(__('Title'), 'title'),
-            Textarea::make('description'),
-            TinyMce::make('article'),
-            Image::make('thumbnail')
-                ->disk('public')
-                ->dir('articles')
-                ->allowedExtensions(['jpg', 'pnp'])
-                ->removable()
-                ->disableDownload()
+            Grid::make([
+                Column::make([
+                    Block::make([
+                        Text::make(__('Title'), 'title')->reactive()->required(),
+                        Slug::make(__('Slug'), 'slug')->from('title')->unique()
+                            ->live()->required(),
+                        TinyMce::make(__('Text'), 'text')->required(),
+                    ]),
+                ])->columnSpan(8),
+                Column::make([
+                    Block::make([
+                        Textarea::make(__('Description'), 'description'),
+                        Textarea::make(__('Keywords'), 'keywords'),
+                        Image::make(__('Thumbnail'), 'thumbnail')
+                            ->disk('public')
+                            ->dir('articles')
+                            ->allowedExtensions(['jpg', 'pnp'])
+                            ->removable()
+                            ->disableDownload(),
+                    ]),
+                ])->columnSpan(4)
+            ]),
         ];
     }
 

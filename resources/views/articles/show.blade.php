@@ -1,10 +1,4 @@
-<x-app-layout>
-    <x-slot name="header">
-        <h1 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ $Article->title }}
-        </h1>
-    </x-slot>
-
+<x-guest-layout>
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
@@ -15,10 +9,17 @@
                     </h1>
 
                     <div class="mt-6 text-gray-500 leading-relaxed">
-                        {!! $Article->article !!}
+                        {!! $Article->text !!}
                     </div>
                 </div>
             </div>
         </div>
     </div>
-</x-app-layout>
+
+    @empty(!$Article->thumbnail)
+    <div style="background:url({{ config('app.url') . '/storage/' . $Article->thumbnail }}) no-repeat center;background-size:cover"
+        class="py-64 px-1 md:px-8 text-center relative text-white font-bold text-2xl md:text-3xl overflow-auto">
+    </div>
+    @endempty
+
+</x-guest-layout>

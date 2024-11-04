@@ -35,10 +35,10 @@ class ArticleController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show($id)
+    public function show(Article $article)
     {
-        $Article = Article::find($id);
-        return view('articles.show', ['Article' => $Article]);
+        //        $Article = Article::find($article->id);
+        return view('articles.show', ['Article' => Article::find($article->id)]);
     }
 
     /**
