@@ -21,7 +21,7 @@ class ArticleFactory extends Factory
             'title' => $this->faker->text(),
             'slug' => $this->faker->text(),
             'description' => $this->faker->text(),
-            'article' => $this->faker->text(),
+            'text' => $this->faker->text(),
             'thumbnail' => Str::random(10),
         ];
     }
