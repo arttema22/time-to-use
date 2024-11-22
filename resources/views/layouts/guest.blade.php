@@ -20,6 +20,8 @@
 </head>
 
 <body class="font-sans antialiased">
+    <x-banner />
+
     <div style="background:url({{ config('app.url') . '/storage/bg_01.jpg' }}) no-repeat center;background-size:cover"
         class="py-64 px-1 md:px-8 text-center relative text-white font-bold text-2xl md:text-3xl overflow-auto">
         {{-- <h1 class="pb-4">{{__('All starts Search')}}</h1>
@@ -36,11 +38,28 @@
         </div> --}}
     </div>
 
-    <div class="font-sans text-gray-900 antialiased">
-        {{ $slot }}
+    <div class="min-h-screen bg-gray-100">
+        @livewire('navigation-menu')
+
+        <!-- Page Heading -->
+        @if (isset($header))
+        <header class="bg-white shadow">
+            <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
+                {{ $header }}
+            </div>
+        </header>
+        @endif
+
+        <!-- Page Content -->
+        <main>
+            {{ $slot }}
+        </main>
     </div>
 
+    @stack('modals')
+
     @livewireScripts
+
 </body>
 
 </html>
