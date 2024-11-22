@@ -22,7 +22,7 @@
 <body class="font-sans antialiased">
     <x-banner />
 
-    <div style="background:url({{ config('app.url') . '/storage/bg_01.jpg' }}) no-repeat center;background-size:cover"
+    <div style="background:url({{ config('app.url') . '/storage/bg_01.jpg' }}) no-repeat bottom; background-size:cover"
         class="py-64 px-1 md:px-8 text-center relative text-white font-bold text-2xl md:text-3xl overflow-auto">
         {{-- <h1 class="pb-4">{{__('All starts Search')}}</h1>
         <div class="w-11/12 md:w-3/4 lg:max-w-3xl m-auto">
