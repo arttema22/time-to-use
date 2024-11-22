@@ -1,0 +1,40 @@
+<svg width="24" height="24" viewBox="0 0 6.35 6.35">
+    
+     <circle
+       style="fill:none;stroke:#2d7fa5;stroke-width:0.5;stroke-linejoin:round;stroke-opacity:1;paint-order:markers fill stroke"
+       cx="3.175"
+       cy="3.175"
+       r="2" />
+       
+       <rect 
+       style="fill:none;stroke:#2d7fa5;stroke-width:0.5;stroke-linejoin:round;stroke-opacity:1;paint-order:markers fill stroke"
+       width="5.5"
+       height="0.027840678"
+       x="0.41289458"
+       y="3.1609502" />
+       
+       <rect
+       style="fill:none;stroke:#2d7fa5;stroke-width:0.529167;stroke-linejoin:round;stroke-opacity:1;paint-order:markers fill stroke"
+       width="5.5"
+       height="0.027840678"
+       x="0.41205481"
+       y="-3.1896307"
+       transform="rotate(90)" />
+       
+       <rect
+       style="fill:none;stroke:#2d7fa5;stroke-width:0.529173;stroke-linejoin:round;stroke-opacity:1;paint-order:markers fill stroke"
+       width="5.95"
+       height="0.030025199"
+       x="1.5110608"
+       y="-0.017069049"
+       transform="matrix(0.70687644,0.70733704,-0.70280086,0.71138664,0,0)" />
+       
+       <rect
+       style="fill:none;stroke:#2d7fa5;stroke-width:0.529173;stroke-linejoin:round;stroke-opacity:1;paint-order:markers fill stroke"
+       width="5.95"
+       height="0.030025199"
+       x="-2.9528217"
+       y="-4.5056429"
+       transform="matrix(-0.70733704,0.70687644,-0.71138664,-0.70280086,0,0)" />
+
+</svg>
