@@ -55,6 +55,68 @@
         </div>
     </section>
 
+    @foreach ($Vehicles as $Vehicle )
+    <a href="#" class="flex flex-col items-center bg-white border border-gray-200
+         rounded-lg shadow-sm md:flex-row hover:bg-gray-100
+          dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700">
+        <img class="object-cover w-full rounded-t-lg h-96 md:h-auto md:w-48 md:rounded-none md:rounded-s-lg"
+            src="/hero/vawe-01.jpg" alt="">
+        <div class="flex flex-col justify-between p-4 leading-normal">
+            <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
+                {{ $Vehicle->name }}
+            </h5>
+            <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">
+                {{ $Vehicle->description }}
+            </p>
+        </div>
+        <div class="flex flex-col justify-between p-4 leading-normal">
+            <div>
+                <div>
+                    {{ __('до') }} {{ $Vehicle->qnty_places }} {{ __('qnty_places') }}
+                </div>
+                <br>{{ __('qnty_siutes') }}{{ $Vehicle->qnty_siutes }}
+                <br>{{ __('qnty_toilets') }}{{ $Vehicle->qnty_toilets }}
+                <br>{{ __('colour') }}{{ $Vehicle->colour }}
+                <br>{{ __('length') }}{{ $Vehicle->length }}
+                <br>{{ __('width') }}{{ $Vehicle->width }}
+            </div>
+
+            <div class="flex gap-1">
+                @if ($Vehicle->flag_shower)
+                <x-flag.flag-shower />
+                @endif
+
+                @if ($Vehicle->flag_fridge)
+                <x-flag.flag-fridge />
+                @endif
+
+                @if ($Vehicle->flag_kitchen)
+                <x-flag.flag-kitchen />
+                @endif
+
+                @if ($Vehicle->flag_audio)
+                <x-flag.flag-audio />
+                @endif
+
+                @if ($Vehicle->flag_tv)
+                <x-flag.flag-tv />
+                @endif
+
+                @if ($Vehicle->flag_open_deck)
+                <x-flag.flag-open-deck />
+                @endif
+
+                @if ($Vehicle->flag_flybridge)
+                <x-flag.flag-flybridge />
+                @endif
+
+            </div>
+        </div>
+    </a>
+    @endforeach
+
+    {{-- {{ $Articles }} --}}
+
     {{-- <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
         <div class="grid grid-cols-2 gap-4 mb-4">
             <div class="flex items-center justify-center rounded-sm bg-gray-50 w-64 dark:bg-gray-800">
