@@ -9,12 +9,47 @@
         <img class="object-cover w-full rounded-t-lg h-96 md:h-auto md:w-48 md:rounded-none md:rounded-s-lg"
             src="/hero/vawe-01.jpg" alt="">
         <div class="flex flex-col justify-between p-4 leading-normal">
+
+            <div>
+                @foreach ( $Vehicle->categories as $Categories )
+                <span
+                    class="bg-gray-100 text-gray-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded-sm dark:bg-gray-700 dark:text-gray-300">
+                    {{ $Categories->name }}
+                </span>
+                @endforeach
+            </div>
+
             <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
                 {{ $Vehicle->name }}
             </h5>
             <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">
                 {{ $Vehicle->description }}
+                <br>
+                @if ($Vehicle->priceList)
+                Цены<br>
+                @foreach ( $Vehicle->priceList->where('flag_activity') as $Price )
+                {{ $Price->date_from }} -
+                {{ $Price->date_to }} -
+                {{ $Price->price }}<br>
+                @endforeach
+                @endif
             </p>
+            <div>
+                Причалы<br>
+                @foreach ($Vehicle->piers->where('flag_activity') as $Piers)
+                {{ $Piers->name }}
+                @endforeach
+            </div>
+
+            <div>
+                Опции<br>
+                @foreach ($Vehicle->availableOption->where('flag_activity') as $Options)
+                @foreach ($Options->option as $test)
+                <div>{{$test}}</div>
+                @endforeach
+                @endforeach
+            </div>
+
         </div>
         <div class="flex flex-col justify-between p-4 leading-normal">
             <div>

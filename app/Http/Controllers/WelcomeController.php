@@ -14,7 +14,12 @@ class WelcomeController extends Controller
     public function index()
     {
         $Articles = Article::take(3)->get();
-        $Vehicles = Vehicle::take(10)->get();
+        $Vehicles = Vehicle::take(10)
+            ->with('priceList')
+            ->with('piers')
+            ->with('categories')
+            ->with('availableOption')
+            ->get();
 
         return view('welcome', ['Articles' => $Articles, 'Vehicles' => $Vehicles]);
     }
