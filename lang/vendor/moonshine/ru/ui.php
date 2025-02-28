@@ -52,6 +52,10 @@ return [
     ],
     'resource' => [
         'system' => 'Система',
+        'categories' => 'Категории',
+        'piers' => 'Причалы',
+        'options' => 'Опции',
+        'clients' => 'Клиенты',
         'role' => 'Роли',
         'name' => 'Имя',
         'email' => 'E-mail',
