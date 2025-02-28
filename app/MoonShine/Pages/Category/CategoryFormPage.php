@@ -2,22 +2,25 @@
 
 declare(strict_types=1);
 
-namespace App\MoonShine\Pages\Article;
+namespace App\MoonShine\Pages\Category;
 
-use MoonShine\Laravel\Pages\Crud\IndexPage;
-use MoonShine\Contracts\UI\ComponentContract;
-use MoonShine\Contracts\UI\FieldContract;
 use Throwable;
+use MoonShine\UI\Fields\Text;
+use MoonShine\Contracts\UI\FieldContract;
+use MoonShine\Laravel\Pages\Crud\FormPage;
+use MoonShine\Contracts\UI\ComponentContract;
 
 
-class ArticleIndexPage extends IndexPage
+class CategoryFormPage extends FormPage
 {
     /**
      * @return list<ComponentContract|FieldContract>
      */
     protected function fields(): iterable
     {
-        return [];
+        return [
+            Text::make('name'),
+        ];
     }
 
     /**

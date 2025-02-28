@@ -9,49 +9,28 @@ use App\Models\Article;
 use App\MoonShine\Pages\Article\ArticleIndexPage;
 use App\MoonShine\Pages\Article\ArticleFormPage;
 use App\MoonShine\Pages\Article\ArticleDetailPage;
-use MoonShine\Resources\ModelResource;
-use MoonShine\Pages\Page;
+
+use MoonShine\Laravel\Resources\ModelResource;
+use MoonShine\Laravel\Pages\Page;
 
 /**
- * @extends ModelResource<Article>
+ * @extends ModelResource<Article, ArticleIndexPage, ArticleFormPage, ArticleDetailPage>
  */
 class ArticleResource extends ModelResource
 {
-    // Модель данных
     protected string $model = Article::class;
 
-    // Поле сортировки по умолчанию
-    protected string $sortColumn = 'created_at';
-
-    // Тип сортировки по умолчанию
-    protected string $sortDirection = 'ASC';
-
-    // Поле для отображения значений в связях и хлебных крошках
-    public string $column = 'title';
-
-    /**
-     * title
-     * Устанавливает заголовок для ресурса.
-     * @return string
-     */
-    public function title(): string
-    {
-        return __('Articles');
-    }
-
+    protected string $title = 'Articles';
+    
     /**
      * @return list<Page>
      */
-    public function pages(): array
+    protected function pages(): array
     {
         return [
-            ArticleIndexPage::make($this->title()),
-            ArticleFormPage::make(
-                $this->getItemID()
-                    ? __('moonshine::ui.edit')
-                    : __('moonshine::ui.add')
-            ),
-            //   ArticleDetailPage::make(__('moonshine::ui.show')),
+            ArticleIndexPage::class,
+            ArticleFormPage::class,
+            ArticleDetailPage::class,
         ];
     }
 
@@ -61,24 +40,8 @@ class ArticleResource extends ModelResource
      * @return array<string, string[]|string>
      * @see https://laravel.com/docs/validation#available-validation-rules
      */
-    public function rules(Model $item): array
+    protected function rules(mixed $item): array
     {
-        return [
-            'title' => ['required', 'string', 'min:3'],
-            'slug' => ['required', 'string', 'min:3'],
-            'text' => ['required', 'string', 'min:3'],
-        ];
-    }
-
-    /**
-     * search
-     * Поля для поиска
-     * @return array
-     */
-    public function search(): array
-    {
-        return [
-            'title',
-        ];
+        return [];
     }
 }

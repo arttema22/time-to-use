@@ -40,6 +40,7 @@ use MoonShine\MenuManager\MenuGroup;
 use App\MoonShine\Resources\System\MoonshineUserResource;
 use App\MoonShine\Resources\System\MoonshineUserRoleResource;
 use App\MoonShine\Resources\VehicleResource;
+use App\MoonShine\Resources\ArticleResource;
 
 final class MoonShineLayout extends AppLayout
 {
@@ -61,6 +62,7 @@ final class MoonShineLayout extends AppLayout
                 MenuItem::make(__('moonshine::ui.resource.role'), MoonshineUserRoleResource::class),
             ]),
             MenuItem::make('Vehicle', VehicleResource::class),
+            MenuItem::make('Articles', ArticleResource::class),
         ];
     }
 

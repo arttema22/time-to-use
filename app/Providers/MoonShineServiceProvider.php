@@ -15,6 +15,7 @@ use App\MoonShine\Resources\System\OptionResource;
 use App\MoonShine\Resources\System\MoonshineUserResource;
 use App\MoonShine\Resources\System\MoonshineUserRoleResource;
 use App\MoonShine\Resources\VehicleResource;
+use App\MoonShine\Resources\ArticleResource;
 
 class MoonShineServiceProvider extends ServiceProvider
 {
@@ -35,6 +36,7 @@ class MoonShineServiceProvider extends ServiceProvider
                 MoonshineUserResource::class,
                 MoonshineUserRoleResource::class,
                 VehicleResource::class,
+                ArticleResource::class,
             ])
             ->pages([
                 ...$config->getPages(),

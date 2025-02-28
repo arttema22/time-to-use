@@ -17,6 +17,7 @@ return new class extends Migration
             $table->timestamps();
             $table->softDeletes();
             $table->foreignId('parent_id')->index()->default(0);
+            $table->integer('sorting')->default(0);
             $table->string('name');
             $table->string('description')->nullable();
             $table->string('code_type_category')->nullable();

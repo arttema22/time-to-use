@@ -2,15 +2,15 @@
 
 declare(strict_types=1);
 
-namespace App\MoonShine\Pages\Article;
+namespace App\MoonShine\Pages\Category;
 
-use MoonShine\Laravel\Pages\Crud\IndexPage;
+use MoonShine\Laravel\Pages\Crud\DetailPage;
 use MoonShine\Contracts\UI\ComponentContract;
 use MoonShine\Contracts\UI\FieldContract;
 use Throwable;
 
 
-class ArticleIndexPage extends IndexPage
+class CategoryDetailPage extends DetailPage
 {
     /**
      * @return list<ComponentContract|FieldContract>

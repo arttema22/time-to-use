@@ -15,6 +15,7 @@ class Category extends Model
 
     protected $fillable = [
         'parent_id',
+        'sorting',
         'name',
         'description',
         'code_type_category',

@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace App\MoonShine\Resources\System;
 
 use App\Models\Category;
-
 use MoonShine\UI\Fields\ID;
 use MoonShine\Support\ListOf;
 use MoonShine\UI\Fields\Date;
@@ -16,11 +15,13 @@ use MoonShine\Laravel\Enums\Action;
 use MoonShine\Support\Enums\PageType;
 use MoonShine\UI\Components\Layout\Box;
 use MoonShine\Laravel\Resources\ModelResource;
+use Leeto\MoonShineTree\Resources\TreeResource;
+use App\MoonShine\Pages\Category\CategoryFormPage;
+use App\MoonShine\Pages\Category\CategoryTreePage;
+use App\MoonShine\Pages\Category\CategoryDetailPage;
+use Leeto\MoonShineTree\View\Components\TreeComponent;
 
-/**
- * @extends ModelResource<Category>
- */
-class CategoryResource extends ModelResource
+class CategoryResource extends TreeResource
 {
     protected ?string $alias = 'categories';
 
@@ -33,6 +34,8 @@ class CategoryResource extends ModelResource
 
     protected string $column = 'name';
 
+    protected string $sortColumn = 'sorting';
+
     protected ?PageType $redirectAfterSave = PageType::INDEX;
 
     protected function activeActions(): ListOf
@@ -40,43 +43,51 @@ class CategoryResource extends ModelResource
         return parent::activeActions()->except(Action::MASS_DELETE);
     }
 
-    public function indexFields(): iterable
+    protected function pages(): array
     {
-        // TODO correct labels values
         return [
-            // Number::make('parent_id', 'parent_id'),
-            Text::make('name', 'name')->sortable(),
-            // Text::make('description', 'description'),
-            // Text::make('code_type_category', 'code_type_category'),
-            // Date::make('date_from', 'date_from'),
-            // Date::make('date_to', 'date_to'),
-            // Text::make('comment', 'comment'),
-            // Text::make('attribute1', 'attribute1'),
-            // Text::make('attribute2', 'attribute2'),
-            // Text::make('attribute3', 'attribute3'),
-            Switcher::make('flag_activity', 'flag_activity')->sortable(),
+            CategoryTreePage::class,
+            CategoryFormPage::class,
+            CategoryDetailPage::class,
         ];
     }
 
-    public function formFields(): iterable
-    {
-        return [
-            Box::make([
-                ...$this->indexFields()
-            ])
-        ];
-    }
+    // public function indexFields(): iterable
+    // {
+    //     return [
+    //         TreeComponent::make($this),
+    //         // Number::make('parent_id', 'parent_id'),
+    //         // Text::make('name', 'name')->sortable(),
+    //         // Text::make('description', 'description'),
+    //         // Text::make('code_type_category', 'code_type_category'),
+    //         // Date::make('date_from', 'date_from'),
+    //         // Date::make('date_to', 'date_to'),
+    //         // Text::make('comment', 'comment'),
+    //         // Text::make('attribute1', 'attribute1'),
+    //         // Text::make('attribute2', 'attribute2'),
+    //         // Text::make('attribute3', 'attribute3'),
+    //         // Switcher::make('flag_activity', 'flag_activity')->sortable(),
+    //     ];
+    // }
 
-    public function detailFields(): iterable
-    {
-        return [
-            ...$this->indexFields()
-        ];
-    }
+    // public function formFields(): iterable
+    // {
+    //     return [
+    //         Box::make([
+    //             ...$this->indexFields()
+    //         ])
+    //     ];
+    // }
+
+    // public function detailFields(): iterable
+    // {
+    //     return [
+    //         ...$this->indexFields()
+    //     ];
+    // }
 
     public function rules(mixed $item): array
     {
-        // TODO change it to your own rules
         return [
             'parent_id' => ['int', 'nullable'],
             'name' => ['string', 'nullable'],
@@ -90,5 +101,15 @@ class CategoryResource extends ModelResource
             'attribute3' => ['string', 'nullable'],
             'flag_activity' => ['accepted', 'sometimes'],
         ];
+    }
+
+    public function treeKey(): ?string
+    {
+        return 'parent_id';
+    }
+
+    public function sortKey(): string
+    {
+        return 'sorting';
     }
 }

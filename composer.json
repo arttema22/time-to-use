@@ -13,6 +13,7 @@
         "laravel/jetstream": "^5.2",
         "laravel/sanctum": "^4.0",
         "laravel/tinker": "^2.9",
+        "lee-to/moonshine-tree-resource": "^2.0",
         "livewire/livewire": "^3.0",
         "moonshine/moonshine": "^3.0"
     },

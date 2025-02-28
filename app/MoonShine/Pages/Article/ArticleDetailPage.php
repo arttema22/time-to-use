@@ -4,23 +4,24 @@ declare(strict_types=1);
 
 namespace App\MoonShine\Pages\Article;
 
-use MoonShine\Pages\Crud\DetailPage;
-use MoonShine\Components\MoonShineComponent;
-use MoonShine\Fields\Field;
+use MoonShine\Laravel\Pages\Crud\DetailPage;
+use MoonShine\Contracts\UI\ComponentContract;
+use MoonShine\Contracts\UI\FieldContract;
 use Throwable;
+
 
 class ArticleDetailPage extends DetailPage
 {
     /**
-     * @return list<MoonShineComponent|Field>
+     * @return list<ComponentContract|FieldContract>
      */
-    public function fields(): array
+    protected function fields(): iterable
     {
         return [];
     }
 
     /**
-     * @return list<MoonShineComponent>
+     * @return list<ComponentContract>
      * @throws Throwable
      */
     protected function topLayer(): array
@@ -31,7 +32,7 @@ class ArticleDetailPage extends DetailPage
     }
 
     /**
-     * @return list<MoonShineComponent>
+     * @return list<ComponentContract>
      * @throws Throwable
      */
     protected function mainLayer(): array
@@ -42,7 +43,7 @@ class ArticleDetailPage extends DetailPage
     }
 
     /**
-     * @return list<MoonShineComponent>
+     * @return list<ComponentContract>
      * @throws Throwable
      */
     protected function bottomLayer(): array

@@ -34,10 +34,10 @@ class DatabaseSeeder extends Seeder
         //     ->has(AvailableOption::factory(3))
         //     ->create();
 
-        // Vehicle::factory(20)
-        //     ->has(Category::factory(2))
-        //     ->has(PriceList::factory(3))
-        //     ->has(Piers::factory(4))
-        //     ->create();
+        Vehicle::factory(20)
+            ->has(Category::factory(2))
+            ->has(PriceList::factory(3))
+            ->has(Piers::factory(4))
+            ->create();
     }
 }
