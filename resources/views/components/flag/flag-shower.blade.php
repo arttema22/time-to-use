@@ -11,20 +11,4 @@
         <path
             d="M411.171,234.001H160.962c-9.012,0-16.302,7.3-16.302,16.302c0,9.005,7.29,16.303,16.302,16.303h250.209 c9.012,0,16.303-7.298,16.303-16.303C427.474,241.302,420.183,234.001,411.171,234.001z" />
     </svg>
-    <button data-popover-target="popover-default" type="button"
-        class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
-        Default
-        popover
-    </button>
-
-    <div data-popover id="popover-default" role="tooltip"
-        class="absolute z-10 invisible inline-block w-64 text-sm text-gray-500 transition-opacity duration-300 bg-white border border-gray-200 rounded-lg shadow-xs opacity-0 dark:text-gray-400 dark:border-gray-600 dark:bg-gray-800">
-        <div class="px-3 py-2 bg-gray-100 border-b border-gray-200 rounded-t-lg dark:border-gray-600 dark:bg-gray-700">
-            <h3 class="font-semibold text-gray-900 dark:text-white">Popover title</h3>
-        </div>
-        <div class="px-3 py-2">
-            <p>And here's some amazing content. It's very engaging. Right?</p>
-        </div>
-        <div data-popper-arrow></div>
-    </div>
 </x-flag.flag>
