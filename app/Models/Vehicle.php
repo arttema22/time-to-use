@@ -61,4 +61,9 @@ class Vehicle extends Model
     {
         return $this->belongsToMany(AvailableOption::class);
     }
+
+    public function response(): HasMany
+    {
+        return $this->hasMany(Response::class);
+    }
 }
