@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace App\MoonShine\Resources\System;
 
 use App\Models\Piers;
-use MoonShine\UI\Fields\ID;
 use MoonShine\Support\ListOf;
 use MoonShine\UI\Fields\Text;
 use MoonShine\UI\Fields\Number;
@@ -14,7 +13,7 @@ use MoonShine\Laravel\Enums\Action;
 use MoonShine\Support\Enums\PageType;
 use MoonShine\UI\Components\Layout\Box;
 use MoonShine\Laravel\Resources\ModelResource;
-
+use MoonShine\UI\Fields\Textarea;
 
 class PiersResource extends ModelResource
 {
@@ -36,19 +35,26 @@ class PiersResource extends ModelResource
         return parent::activeActions()->except(Action::MASS_DELETE);
     }
 
+    protected bool $createInModal = true;
+
+    protected bool $editInModal = true;
+
+    protected bool $detailInModal = true;
+
+    protected bool $stickyButtons = true;
+
     public function indexFields(): iterable
     {
-        // TODO correct labels values
         return [
-            Text::make('name', 'name'),
-            Text::make('description', 'description'),
-            Number::make('latitude', 'latitude'),
-            Number::make('longitude', 'longitude'),
-            Text::make('url_yandex_map', 'url_yandex_map'),
-            Text::make('attribute1', 'attribute1'),
-            Text::make('attribute2', 'attribute2'),
-            Text::make('attribute3', 'attribute3'),
-            Switcher::make('flag_activity', 'flag_activity'),
+            Text::make('name')->sticky(),
+            Textarea::make('description'),
+            Number::make('latitude'),
+            Number::make('longitude'),
+            Text::make('url_yandex_map'),
+            //Text::make('attribute1'),
+            //Text::make('attribute2'),
+            //Text::make('attribute3'),
+            Switcher::make('flag_activity'),
         ];
     }
 

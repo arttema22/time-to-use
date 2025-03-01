@@ -37,6 +37,14 @@ class MoonshineUserRoleResource extends ModelResource
         return parent::activeActions()->except(Action::MASS_DELETE);
     }
 
+    protected bool $createInModal = true;
+
+    protected bool $editInModal = true;
+
+    protected bool $detailInModal = true;
+
+    protected bool $stickyButtons = true;
+
     public function indexFields(): iterable
     {
         return [

@@ -62,16 +62,16 @@
         },
         {
             "name": "brick/math",
-            "version": "0.12.2",
+            "version": "0.12.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/brick/math.git",
-                "reference": "901eddb1e45a8e0f689302e40af871c181ecbe40"
+                "reference": "866551da34e9a618e64a819ee1e01c20d8a588ba"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/brick/math/zipball/901eddb1e45a8e0f689302e40af871c181ecbe40",
-                "reference": "901eddb1e45a8e0f689302e40af871c181ecbe40",
+                "url": "https://api.github.com/repos/brick/math/zipball/866551da34e9a618e64a819ee1e01c20d8a588ba",
+                "reference": "866551da34e9a618e64a819ee1e01c20d8a588ba",
                 "shasum": ""
             },
             "require": {
@@ -110,7 +110,7 @@
             ],
             "support": {
                 "issues": "https://github.com/brick/math/issues",
-                "source": "https://github.com/brick/math/tree/0.12.2"
+                "source": "https://github.com/brick/math/tree/0.12.3"
             },
             "funding": [
                 {
@@ -118,7 +118,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2025-02-26T10:21:45+00:00"
+            "time": "2025-02-28T13:11:00+00:00"
         },
         {
             "name": "carbonphp/carbon-doctrine-types",
@@ -6833,16 +6833,16 @@
     "packages-dev": [
         {
             "name": "dev-lnk/moonshine-builder",
-            "version": "2.2.0",
+            "version": "2.2.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/dev-lnk/moonshine-builder.git",
-                "reference": "cb51908cc0267476c33d87edf7481a80dd70a891"
+                "reference": "230c11d6492b846176dd1ff78937214974a145ba"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/dev-lnk/moonshine-builder/zipball/cb51908cc0267476c33d87edf7481a80dd70a891",
-                "reference": "cb51908cc0267476c33d87edf7481a80dd70a891",
+                "url": "https://api.github.com/repos/dev-lnk/moonshine-builder/zipball/230c11d6492b846176dd1ff78937214974a145ba",
+                "reference": "230c11d6492b846176dd1ff78937214974a145ba",
                 "shasum": ""
             },
             "require": {
@@ -6891,9 +6891,9 @@
             ],
             "support": {
                 "issues": "https://github.com/dev-lnk/moonshine-builder/issues",
-                "source": "https://github.com/dev-lnk/moonshine-builder/tree/2.2.0"
+                "source": "https://github.com/dev-lnk/moonshine-builder/tree/2.2.1"
             },
-            "time": "2025-02-28T10:55:31+00:00"
+            "time": "2025-02-28T14:03:30+00:00"
         },
         {
             "name": "fakerphp/faker",

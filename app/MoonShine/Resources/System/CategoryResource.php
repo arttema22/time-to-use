@@ -5,21 +5,13 @@ declare(strict_types=1);
 namespace App\MoonShine\Resources\System;
 
 use App\Models\Category;
-use MoonShine\UI\Fields\ID;
 use MoonShine\Support\ListOf;
-use MoonShine\UI\Fields\Date;
-use MoonShine\UI\Fields\Text;
-use MoonShine\UI\Fields\Number;
-use MoonShine\UI\Fields\Switcher;
 use MoonShine\Laravel\Enums\Action;
 use MoonShine\Support\Enums\PageType;
-use MoonShine\UI\Components\Layout\Box;
-use MoonShine\Laravel\Resources\ModelResource;
 use Leeto\MoonShineTree\Resources\TreeResource;
 use App\MoonShine\Pages\Category\CategoryFormPage;
 use App\MoonShine\Pages\Category\CategoryTreePage;
 use App\MoonShine\Pages\Category\CategoryDetailPage;
-use Leeto\MoonShineTree\View\Components\TreeComponent;
 
 class CategoryResource extends TreeResource
 {
@@ -43,6 +35,14 @@ class CategoryResource extends TreeResource
         return parent::activeActions()->except(Action::MASS_DELETE);
     }
 
+    protected bool $createInModal = true;
+
+    protected bool $editInModal = true;
+
+    protected bool $detailInModal = true;
+
+    protected bool $stickyButtons = true;
+
     protected function pages(): array
     {
         return [
@@ -51,40 +51,6 @@ class CategoryResource extends TreeResource
             CategoryDetailPage::class,
         ];
     }
-
-    // public function indexFields(): iterable
-    // {
-    //     return [
-    //         TreeComponent::make($this),
-    //         // Number::make('parent_id', 'parent_id'),
-    //         // Text::make('name', 'name')->sortable(),
-    //         // Text::make('description', 'description'),
-    //         // Text::make('code_type_category', 'code_type_category'),
-    //         // Date::make('date_from', 'date_from'),
-    //         // Date::make('date_to', 'date_to'),
-    //         // Text::make('comment', 'comment'),
-    //         // Text::make('attribute1', 'attribute1'),
-    //         // Text::make('attribute2', 'attribute2'),
-    //         // Text::make('attribute3', 'attribute3'),
-    //         // Switcher::make('flag_activity', 'flag_activity')->sortable(),
-    //     ];
-    // }
-
-    // public function formFields(): iterable
-    // {
-    //     return [
-    //         Box::make([
-    //             ...$this->indexFields()
-    //         ])
-    //     ];
-    // }
-
-    // public function detailFields(): iterable
-    // {
-    //     return [
-    //         ...$this->indexFields()
-    //     ];
-    // }
 
     public function rules(mixed $item): array
     {

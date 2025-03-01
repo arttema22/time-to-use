@@ -15,6 +15,7 @@ use MoonShine\Laravel\Enums\Action;
 use MoonShine\Support\Enums\PageType;
 use MoonShine\UI\Components\Layout\Box;
 use MoonShine\Laravel\Resources\ModelResource;
+use MoonShine\UI\Fields\Textarea;
 
 /**
  * @extends ModelResource<Option>
@@ -39,19 +40,25 @@ class OptionResource extends ModelResource
         return parent::activeActions()->except(Action::MASS_DELETE);
     }
 
+    protected bool $createInModal = true;
+
+    protected bool $editInModal = true;
+
+    protected bool $detailInModal = true;
+
+    protected bool $stickyButtons = true;
+
     public function indexFields(): iterable
     {
-        // TODO correct labels values
         return [
-            ID::make('id'),
-            Text::make('name', 'name'),
-            Text::make('description', 'description'),
-            Date::make('date_from', 'date_from'),
-            Date::make('date_to', 'date_to'),
-            Text::make('attribute1', 'attribute1'),
-            Text::make('attribute2', 'attribute2'),
-            Text::make('attribute3', 'attribute3'),
-            Switcher::make('flag_activity', 'flag_activity'),
+            Text::make('name')->sticky(),
+            Textarea::make('description', 'description'),
+            Date::make('date_from'),
+            Date::make('date_to'),
+            //Text::make('attribute1', 'attribute1'),
+            //Text::make('attribute2', 'attribute2'),
+            //Text::make('attribute3', 'attribute3'),
+            Switcher::make('flag_activity'),
         ];
     }
 

@@ -41,15 +41,21 @@ class MoonshineUserResource extends ModelResource
         return parent::activeActions()->except(Action::MASS_DELETE);
     }
 
+    protected bool $createInModal = true;
+
+    protected bool $editInModal = true;
+
+    protected bool $detailInModal = true;
+
+    protected bool $stickyButtons = true;
+
     public function indexFields(): iterable
     {
-        // TODO correct labels values
         return [
-            ID::make('id'),
+            Text::make('name', 'name')->sticky(),
             //  BelongsTo::make('moonshine_user_role_id', 'moonshineUserRole', resource: MoonShineUserRoleResource::class),
             Text::make('email', 'email'),
-            Text::make('password', 'password'),
-            Text::make('name', 'name'),
+            //Text::make('password', 'password'),
             Text::make('avatar', 'avatar'),
             Text::make('remember_token', 'remember_token'),
         ];
@@ -59,7 +65,8 @@ class MoonshineUserResource extends ModelResource
     {
         return [
             Box::make([
-                ...$this->indexFields()
+                ...$this->indexFields(),
+                Text::make('password', 'password'),
             ])
         ];
     }
