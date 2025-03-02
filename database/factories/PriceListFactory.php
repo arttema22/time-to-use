@@ -2,7 +2,7 @@
 
 namespace Database\Factories;
 
-use App\Models\User;
+use App\Models\Owner;
 use App\Models\Vehicle;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
@@ -19,7 +19,7 @@ class PriceListFactory extends Factory
     public function definition(): array
     {
         return [
-            'user_id' => User::all()->random(),
+            'owner_id' => Owner::all()->random(),
             'vehicle_id' => Vehicle::all()->random(),
             'price' => $this->faker->randomFloat(16),
             'date_from' => $this->faker->date,

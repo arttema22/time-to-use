@@ -2,7 +2,7 @@
 
 namespace Database\Factories;
 
-use App\Models\User;
+use App\Models\Owner;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -18,7 +18,7 @@ class VehicleFactory extends Factory
     public function definition(): array
     {
         return [
-            'user_id' => User::all()->random(),
+            'owner_id' => Owner::all()->random(),
             'name' => $this->faker->company(),
             'qnty_places' => $this->faker->numberBetween(1, 100),
             'date_from' => $this->faker->date,

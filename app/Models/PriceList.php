@@ -11,6 +11,12 @@ class PriceList extends Model
     /** @use HasFactory<\Database\Factories\PriceListFactory> */
     use HasFactory;
 
+    public function owner(): BelongsTo
+    {
+        return $this->belongsTo(Owner::class);
+    }
+
+
     public function vehicle(): BelongsTo
     {
         return $this->belongsTo(Vehicle::class);

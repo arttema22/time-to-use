@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->timestamps();
             $table->softDeletes();
-            $table->foreignId('user_id')->index();
+            $table->foreignId('owner_id')->index();
             $table->foreignId('vehicle_id')->index();
             $table->decimal('price', 16, 2);
             $table->date('date_from')->nullable();

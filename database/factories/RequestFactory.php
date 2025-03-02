@@ -2,8 +2,8 @@
 
 namespace Database\Factories;
 
-use App\Models\MoonshineUser;
 use App\Models\Order;
+use App\Models\Owner;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -20,7 +20,7 @@ class RequestFactory extends Factory
     {
         return [
             'order_id' => Order::all()->random(),
-            'moonshine_user_id' => MoonshineUser::all()->random(),
+            'owner_id' => Owner::all()->random(),
             'frequest_status' => $this->faker->boolean(),
             'request_date_from' => $this->faker->date,
             'request_date_to' => $this->faker->date,

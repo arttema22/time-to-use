@@ -12,6 +12,11 @@ class AvailableOption extends Model
     /** @use HasFactory<\Database\Factories\AvailableOptionFactory> */
     use HasFactory;
 
+    public function owner(): BelongsTo
+    {
+        return $this->belongsTo(Owner::class);
+    }
+
     public function option(): BelongsTo
     {
         return $this->belongsTo(Option::class);

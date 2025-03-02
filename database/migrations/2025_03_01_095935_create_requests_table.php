@@ -16,7 +16,7 @@ return new class extends Migration
             $table->timestamps();
             $table->softDeletes();
             $table->foreignId('order_id')->index();
-            $table->foreignId('moonshine_user_id')->index();
+            $table->foreignId('owner_id')->index();
             $table->boolean('frequest_status')->nullable();
             $table->dateTime('request_date_from');
             $table->dateTime('request_date_to');
