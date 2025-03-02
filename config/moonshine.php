@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Owner;
 use Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse;
 use Illuminate\Cookie\Middleware\EncryptCookies;
 use Illuminate\Foundation\Http\Middleware\VerifyCsrfToken;
@@ -26,7 +27,7 @@ return [
 
 
     // Default flags
-    'use_migrations' => true,
+    'use_migrations' => false,
     'use_notifications' => true,
     'use_database_notifications' => false,
     'use_profile' => true,
@@ -62,7 +63,8 @@ return [
     'auth' => [
         'enabled' => true,
         'guard' => 'moonshine',
-        'model' => MoonshineUser::class,
+        //'model' => MoonshineUser::class,
+        'model' => Owner::class,
         'middleware' => Authenticate::class,
         'pipelines' => [],
     ],
@@ -91,8 +93,9 @@ return [
     ],
 
     // Localizations
-    'locale' => 'en',
+    'locale' => 'ru',
     'locales' => [
-        // en
+        'ru',
+        'en'
     ],
 ];
