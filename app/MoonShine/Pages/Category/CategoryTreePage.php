@@ -13,6 +13,7 @@ use MoonShine\Contracts\UI\FieldContract;
 use MoonShine\Laravel\Pages\Crud\IndexPage;
 use MoonShine\Contracts\UI\ComponentContract;
 use Leeto\MoonShineTree\View\Components\TreeComponent;
+use MoonShine\UI\Components\Heading;
 use MoonShine\UI\Fields\Textarea;
 
 class CategoryTreePage extends IndexPage
@@ -23,16 +24,13 @@ class CategoryTreePage extends IndexPage
     protected function fields(): iterable
     {
         return [
-            Text::make('name')->sticky(),
-            Textarea::make('description'),
-            Text::make('code_type_category'),
-            Date::make('date_from'),
-            Date::make('date_to'),
-            Text::make('comment'),
-            //Text::make('attribute1', 'attribute1'),
-            //Text::make('attribute2', 'attribute2'),
-            //Text::make('attribute3', 'attribute3'),
-            Switcher::make('flag_activity')->sortable(),
+            Text::make('name')->sortable()->sticky()->columnSelection(false)->translatable('moonshine::ui.resource'),
+            Textarea::make('description')->translatable('moonshine::ui.resource'),
+            Text::make('code_type_category')->translatable('moonshine::ui.resource'),
+            Date::make('date_from')->translatable('moonshine::ui.resource'),
+            Date::make('date_to')->translatable('moonshine::ui.resource'),
+            Textarea::make('comment')->translatable('moonshine::ui.resource'),
+            Switcher::make('flag_activity')->sortable()->translatable('moonshine::ui.resource'),
         ];
     }
 
@@ -55,7 +53,8 @@ class CategoryTreePage extends IndexPage
     {
         return [
             ...parent::mainLayer(),
-            ...$this->getPageButtons(),
+            // ...$this->getPageButtons(),
+            Heading::make('Sorting')->tag('h1'),
             TreeComponent::make($this->getResource()),
         ];
     }

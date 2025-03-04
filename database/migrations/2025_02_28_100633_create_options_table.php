@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Option;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -24,6 +25,24 @@ return new class extends Migration
             $table->string('attribute3')->nullable();
             $table->boolean('flag_activity');
         });
+
+        Option::create([
+            'name' => 'Мангал',
+            'description' => 'На 10 шомпуров, на ножках.',
+            'flag_activity' => '1',
+        ]);
+
+        Option::create([
+            'name' => 'Плед',
+            'description' => 'На случай холодной погоды поможет плед.',
+            'flag_activity' => '1',
+        ]);
+
+        Option::create([
+            'name' => 'Зонт',
+            'description' => 'На случай дождя.',
+            'flag_activity' => '1',
+        ]);
     }
 
     /**

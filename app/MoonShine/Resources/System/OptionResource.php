@@ -6,7 +6,6 @@ namespace App\MoonShine\Resources\System;
 
 use App\Models\Option;
 
-use MoonShine\UI\Fields\ID;
 use MoonShine\Support\ListOf;
 use MoonShine\UI\Fields\Date;
 use MoonShine\UI\Fields\Text;
@@ -33,6 +32,10 @@ class OptionResource extends ModelResource
 
     protected string $column = 'name';
 
+    protected string $sortColumn = 'name';
+
+    protected bool $columnSelection = true;
+
     protected ?PageType $redirectAfterSave = PageType::INDEX;
 
     protected function activeActions(): ListOf
@@ -51,14 +54,11 @@ class OptionResource extends ModelResource
     public function indexFields(): iterable
     {
         return [
-            Text::make('name')->sticky(),
-            Textarea::make('description', 'description'),
-            Date::make('date_from'),
-            Date::make('date_to'),
-            //Text::make('attribute1', 'attribute1'),
-            //Text::make('attribute2', 'attribute2'),
-            //Text::make('attribute3', 'attribute3'),
-            Switcher::make('flag_activity'),
+            Text::make('name')->required()->sortable()->sticky()->columnSelection(false)->translatable('moonshine::ui.resource'),
+            Textarea::make('description')->translatable('moonshine::ui.resource'),
+            Date::make('date_from')->translatable('moonshine::ui.resource'),
+            Date::make('date_to')->translatable('moonshine::ui.resource'),
+            Switcher::make('flag_activity')->sortable()->translatable('moonshine::ui.resource'),
         ];
     }
 
@@ -80,17 +80,11 @@ class OptionResource extends ModelResource
 
     public function rules(mixed $item): array
     {
-        // TODO change it to your own rules
         return [
-            'id' => ['int', 'nullable'],
-            'name' => ['string', 'nullable'],
+            'name' => ['string', 'required'],
             'description' => ['string', 'nullable'],
             'date_from' => ['string', 'nullable'],
             'date_to' => ['string', 'nullable'],
-            'attribute1' => ['string', 'nullable'],
-            'attribute2' => ['string', 'nullable'],
-            'attribute3' => ['string', 'nullable'],
-            'flag_activity' => ['accepted', 'sometimes'],
         ];
     }
 }

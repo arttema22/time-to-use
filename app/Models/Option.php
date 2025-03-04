@@ -24,7 +24,7 @@ class Option extends Model
         'flag_activity',
     ];
 
-    public function availableOption(): HasMany
+    public function availableOptions(): HasMany
     {
         return $this->hasMany(AvailableOption::class);
     }

@@ -45,7 +45,8 @@ return new class extends Migration
             'owner_role_id' => 1,
             'email' => 'test2@test2.ru',
             'password' => bcrypt('1234qwerQWER'),
-            'name' => 'Test 2',
+            'name' => 'Test 2
+            ',
         ]);
     }
 

@@ -37,10 +37,11 @@ use MoonShine\MenuManager\MenuItem;
 use App\MoonShine\Resources\System\PiersResource;
 use App\MoonShine\Resources\System\OptionResource;
 use MoonShine\MenuManager\MenuGroup;
-use App\MoonShine\Resources\System\MoonshineUserResource;
-use App\MoonShine\Resources\System\MoonshineUserRoleResource;
 use App\MoonShine\Resources\VehicleResource;
 use App\MoonShine\Resources\ArticleResource;
+use App\MoonShine\Resources\System\OwnerRoleResource;
+use App\MoonShine\Resources\System\OwnerResource;
+use App\MoonShine\Resources\AvailableOptionResource;
 
 final class MoonShineLayout extends AppLayout
 {
@@ -58,11 +59,16 @@ final class MoonShineLayout extends AppLayout
                 MenuItem::make(__('moonshine::ui.resource.categories'), CategoryResource::class),
                 MenuItem::make(__('moonshine::ui.resource.piers'), PiersResource::class),
                 MenuItem::make(__('moonshine::ui.resource.options'), OptionResource::class),
-                MenuItem::make(__('moonshine::ui.resource.clients'), MoonshineUserResource::class),
-                MenuItem::make(__('moonshine::ui.resource.role'), MoonshineUserRoleResource::class),
+                MenuItem::make(__('moonshine::ui.resource.roles'), OwnerRoleResource::class),
+                MenuItem::make(__('moonshine::ui.resource.owners'), OwnerResource::class),
             ]),
-            MenuItem::make('Vehicle', VehicleResource::class),
+
+            MenuItem::make(__('moonshine::ui.resource.options'), AvailableOptionResource::class),
+
+
+            MenuItem::make(__('moonshine::ui.resource.vehicles'), VehicleResource::class),
             MenuItem::make('Articles', ArticleResource::class),
+
         ];
     }
 

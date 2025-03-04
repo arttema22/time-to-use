@@ -4,31 +4,33 @@ declare(strict_types=1);
 
 namespace App\MoonShine\Resources\System;
 
-use MoonShine\UI\Fields\ID;
-
+use App\Models\OwnerRole;
 use MoonShine\Support\ListOf;
 use MoonShine\UI\Fields\Text;
-use App\Models\MoonshineUserRole;
 use MoonShine\Laravel\Enums\Action;
 use MoonShine\Support\Enums\PageType;
 use MoonShine\UI\Components\Layout\Box;
 use MoonShine\Laravel\Resources\ModelResource;
 
 /**
- * @extends ModelResource<MoonshineUserRole>
+ * @extends ModelResource<OwnerRole>
  */
-class MoonshineUserRoleResource extends ModelResource
+class OwnerRoleResource extends ModelResource
 {
-    protected ?string $alias = 'roles';
+    protected ?string $alias = 'owner-roles';
 
-    protected string $model = MoonshineUserRole::class;
+    protected string $model = OwnerRole::class;
 
     public function getTitle(): string
     {
-        return __('moonshine::ui.resource.role');
+        return __('moonshine::ui.resource.roles');
     }
 
     protected string $column = 'name';
+
+    protected string $sortColumn = 'name';
+
+    protected bool $columnSelection = true;
 
     protected ?PageType $redirectAfterSave = PageType::INDEX;
 
@@ -48,7 +50,7 @@ class MoonshineUserRoleResource extends ModelResource
     public function indexFields(): iterable
     {
         return [
-            Text::make('name', 'name'),
+            Text::make('name')->required()->sortable()->sticky()->columnSelection(false)->translatable('moonshine::ui.resource'),
         ];
     }
 
@@ -70,10 +72,8 @@ class MoonshineUserRoleResource extends ModelResource
 
     public function rules(mixed $item): array
     {
-        // TODO change it to your own rules
         return [
-            'id' => ['int', 'nullable'],
-            'name' => ['string', 'nullable'],
+            'name' => ['string', 'required'],
         ];
     }
 }

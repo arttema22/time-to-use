@@ -28,6 +28,8 @@ class CategoryResource extends TreeResource
 
     protected string $sortColumn = 'sorting';
 
+    protected bool $columnSelection = true;
+
     protected ?PageType $redirectAfterSave = PageType::INDEX;
 
     protected function activeActions(): ListOf
@@ -56,16 +58,12 @@ class CategoryResource extends TreeResource
     {
         return [
             'parent_id' => ['int', 'nullable'],
-            'name' => ['string', 'nullable'],
+            'name' => ['string', 'required'],
             'description' => ['string', 'nullable'],
             'code_type_category' => ['string', 'nullable'],
             'date_from' => ['string', 'nullable'],
             'date_to' => ['string', 'nullable'],
             'comment' => ['string', 'nullable'],
-            'attribute1' => ['string', 'nullable'],
-            'attribute2' => ['string', 'nullable'],
-            'attribute3' => ['string', 'nullable'],
-            'flag_activity' => ['accepted', 'sometimes'],
         ];
     }
 

@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Piers;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -23,8 +24,33 @@ return new class extends Migration
             $table->string('attribute1')->nullable();
             $table->string('attribute2')->nullable();
             $table->string('attribute3')->nullable();
-            $table->boolean('flag_activity');
+            $table->boolean('flag_activity')->default(0);
         });
+
+        Piers::create([
+            'name' => 'Ушаковский мост',
+            'flag_activity' => '1',
+        ]);
+
+        Piers::create([
+            'name' => 'Выборгская набережная 61',
+            'flag_activity' => '1',
+        ]);
+
+        Piers::create([
+            'name' => 'Аптекарская набережная 8',
+            'flag_activity' => '1',
+        ]);
+
+        Piers::create([
+            'name' => 'Дворцовая набережная 5',
+            'flag_activity' => '1',
+        ]);
+
+        Piers::create([
+            'name' => 'Набережная реки Мойки 78',
+            'flag_activity' => '1',
+        ]);
     }
 
     /**

@@ -19,11 +19,11 @@ return new class extends Migration
             $table->foreignId('parent_id')->index()->default(0);
             $table->integer('sorting')->default(0);
             $table->string('name');
-            $table->string('description')->nullable();
+            $table->text('description')->nullable();
             $table->string('code_type_category')->nullable();
             $table->date('date_from')->nullable();
             $table->date('date_to')->nullable();
-            $table->string('comment')->nullable();
+            $table->text('comment')->nullable();
             $table->string('attribute1')->nullable();
             $table->string('attribute2')->nullable();
             $table->string('attribute3')->nullable();
@@ -31,19 +31,25 @@ return new class extends Migration
         });
 
         Category::create([
+            'name' => 'Водный транспорт',
+            'flag_activity' => '1',
+        ]);
+        Category::create([
+            'name' => 'Моторное судно',
+            'parent_id' => 1,
+            'sorting' => 2,
+            'flag_activity' => '1',
+        ]);
+        Category::create([
             'name' => 'Катер',
-            'flag_activity' => '1',
-        ]);
-        Category::create([
-            'name' => 'Большое судно',
-            'flag_activity' => '1',
-        ]);
-        Category::create([
-            'name' => 'Водный мотоцикл',
+            'parent_id' => 1,
+            'sorting' => 0,
             'flag_activity' => '1',
         ]);
         Category::create([
             'name' => 'Парусная яхта',
+            'parent_id' => 1,
+            'sorting' => 1,
             'flag_activity' => '1',
         ]);
     }

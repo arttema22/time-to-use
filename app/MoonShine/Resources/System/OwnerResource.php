@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace App\MoonShine\Resources\System;
 
-use MoonShine\UI\Fields\ID;
-use App\Models\MoonshineUser;
+use App\Models\Owner;
+
 use MoonShine\Support\ListOf;
 use MoonShine\UI\Fields\Text;
 use MoonShine\Laravel\Enums\Action;
@@ -13,26 +13,28 @@ use MoonShine\Support\Enums\PageType;
 use MoonShine\UI\Components\Layout\Box;
 use MoonShine\Laravel\Resources\ModelResource;
 use MoonShine\Laravel\Fields\Relationships\BelongsTo;
-use App\MoonShine\Resources\System\MoonShineUserRoleResource;
-
 
 /**
- * @extends ModelResource<MoonshineUser>
+ * @extends ModelResource<Owner>
  */
-class MoonshineUserResource extends ModelResource
+class OwnerResource extends ModelResource
 {
-    protected ?string $alias = 'clients';
+    protected ?string $alias = 'owners';
 
-    protected string $model = MoonshineUser::class;
+    protected string $model = Owner::class;
+
+    protected array $with = ['ownerRole'];
 
     public function getTitle(): string
     {
-        return __('moonshine::ui.resource.clients');
+        return __('moonshine::ui.resource.owners');
     }
 
-    protected array $with = ['moonshineUserRole'];
-
     protected string $column = 'name';
+
+    protected string $sortColumn = 'name';
+
+    protected bool $columnSelection = true;
 
     protected ?PageType $redirectAfterSave = PageType::INDEX;
 
@@ -52,12 +54,10 @@ class MoonshineUserResource extends ModelResource
     public function indexFields(): iterable
     {
         return [
-            Text::make('name', 'name')->sticky(),
-            //  BelongsTo::make('moonshine_user_role_id', 'moonshineUserRole', resource: MoonShineUserRoleResource::class),
-            Text::make('email', 'email'),
-            //Text::make('password', 'password'),
-            Text::make('avatar', 'avatar'),
-            Text::make('remember_token', 'remember_token'),
+            Text::make('name')->required()->sortable()->sticky()->columnSelection(false)->translatable('moonshine::ui.resource'),
+            Text::make('email')->required()->sortable()->translatable('moonshine::ui.resource'),
+            BelongsTo::make('role', 'ownerRole', resource: OwnerRoleResource::class)->translatable('moonshine::ui.resource'),
+            Text::make('created_at')->sortable()->translatable('moonshine::ui.resource'),
         ];
     }
 
@@ -80,13 +80,11 @@ class MoonshineUserResource extends ModelResource
 
     public function rules(mixed $item): array
     {
-        // TODO change it to your own rules
         return [
-            'id' => ['int', 'nullable'],
-            'moonshine_user_role_id' => ['int', 'nullable'],
-            'email' => ['email', 'nullable'],
-            'password' => ['password', 'nullable'],
-            'name' => ['string', 'nullable'],
+            'name' => ['string', 'required'],
+            'email' => ['email', 'required'],
+            'owner_role_id' => ['int', 'nullable'],
+            'password' => ['password', 'required'],
             'avatar' => ['string', 'nullable'],
             'remember_token' => ['string', 'nullable'],
         ];

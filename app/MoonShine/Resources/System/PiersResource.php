@@ -28,6 +28,10 @@ class PiersResource extends ModelResource
 
     protected string $column = 'name';
 
+    protected string $sortColumn = 'name';
+
+    protected bool $columnSelection = true;
+
     protected ?PageType $redirectAfterSave = PageType::INDEX;
 
     protected function activeActions(): ListOf
@@ -46,15 +50,12 @@ class PiersResource extends ModelResource
     public function indexFields(): iterable
     {
         return [
-            Text::make('name')->sticky(),
-            Textarea::make('description'),
-            Number::make('latitude'),
-            Number::make('longitude'),
-            Text::make('url_yandex_map'),
-            //Text::make('attribute1'),
-            //Text::make('attribute2'),
-            //Text::make('attribute3'),
-            Switcher::make('flag_activity'),
+            Text::make('name')->required()->sortable()->sticky()->columnSelection(false)->translatable('moonshine::ui.resource'),
+            Textarea::make('description')->translatable('moonshine::ui.resource'),
+            Number::make('latitude')->translatable('moonshine::ui.resource'),
+            Number::make('longitude')->translatable('moonshine::ui.resource'),
+            Text::make('url_yandex_map')->translatable('moonshine::ui.resource'),
+            Switcher::make('flag_activity')->sortable()->translatable('moonshine::ui.resource'),
         ];
     }
 
@@ -76,18 +77,12 @@ class PiersResource extends ModelResource
 
     public function rules(mixed $item): array
     {
-        // TODO change it to your own rules
         return [
-            'id' => ['int', 'nullable'],
-            'name' => ['string', 'nullable'],
+            'name' => ['string', 'required'],
             'description' => ['string', 'nullable'],
             'latitude' => ['int', 'nullable'],
             'longitude' => ['int', 'nullable'],
             'url_yandex_map' => ['string', 'nullable'],
-            'attribute1' => ['string', 'nullable'],
-            'attribute2' => ['string', 'nullable'],
-            'attribute3' => ['string', 'nullable'],
-            'flag_activity' => ['accepted', 'sometimes'],
         ];
     }
 }

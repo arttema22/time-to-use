@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\Option;
 use App\Models\Owner;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
@@ -19,8 +20,8 @@ class AvailableOptionFactory extends Factory
     {
         return [
             'owner_id' => Owner::all()->random(),
-            //  'option_id'
-            'qnty_available' => 2,
+            'option_id' => Option::all()->random(),
+            'qnty_available' => $this->faker->numberBetween(1, 10),
             'date_from' => $this->faker->date,
             'date_to' => $this->faker->date,
             'attribute1' => $this->faker->realText(200),
