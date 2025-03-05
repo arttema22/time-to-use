@@ -27,20 +27,65 @@ return new class extends Migration
         });
 
         Option::create([
-            'name' => 'Мангал',
-            'description' => 'На 10 шомпуров, на ножках.',
+            'name' => 'Ди-ждей',
             'flag_activity' => '1',
         ]);
-
+        Option::create([
+            'name' => 'Зонт',
+            'description' => 'На случай дождя.',
+            'flag_activity' => '1',
+        ]);
+        Option::create([
+            'name' => 'Кейтеринг',
+            'flag_activity' => '1',
+        ]);
+        Option::create([
+            'name' => 'Мангал',
+            'flag_activity' => '1',
+        ]);
+        Option::create([
+            'name' => 'Моментальное фото',
+            'flag_activity' => '1',
+        ]);
+        Option::create([
+            'name' => 'Певица',
+            'flag_activity' => '1',
+        ]);
         Option::create([
             'name' => 'Плед',
             'description' => 'На случай холодной погоды поможет плед.',
             'flag_activity' => '1',
         ]);
-
         Option::create([
-            'name' => 'Зонт',
-            'description' => 'На случай дождя.',
+            'name' => 'Подарочный сертификат',
+            'flag_activity' => '1',
+        ]);
+        Option::create([
+            'name' => 'Похищение невесты',
+            'flag_activity' => '1',
+        ]);
+        Option::create([
+            'name' => 'Саксофонист',
+            'flag_activity' => '1',
+        ]);
+        Option::create([
+            'name' => 'Туристический стол с сиденьями',
+            'flag_activity' => '1',
+        ]);
+        Option::create([
+            'name' => 'Украшение цветами',
+            'flag_activity' => '1',
+        ]);
+        Option::create([
+            'name' => 'Украшение шарами',
+            'flag_activity' => '1',
+        ]);
+        Option::create([
+            'name' => 'Фокусник',
+            'flag_activity' => '1',
+        ]);
+        Option::create([
+            'name' => 'Цветы',
             'flag_activity' => '1',
         ]);
     }
