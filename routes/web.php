@@ -2,10 +2,14 @@
 
 use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\ClientAuthController;
+use App\Http\Controllers\InsearchController;
 use App\Http\Controllers\WelcomeController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', [WelcomeController::class, 'index'])->name('welcome');
+
+Route::post('insearch', [InsearchController::class, 'search'])->name('insearch');
+
 
 Route::middleware([
     'auth:sanctum',

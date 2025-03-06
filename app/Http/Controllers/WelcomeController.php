@@ -3,9 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Order;
-use App\Models\Article;
 use App\Models\Vehicle;
-use Illuminate\Http\Request;
 
 class WelcomeController extends Controller
 {
@@ -14,15 +12,9 @@ class WelcomeController extends Controller
      */
     public function index()
     {
-        $Articles = Article::take(3)->get();
-        $Orders = Order::all()->count();
-        $Vehicles = Vehicle::take(10)
-            ->with('priceList')
-            ->with('piers')
-            ->with('categories')
-            ->with('availableOption')
-            ->get();
+        $orders_count = Order::count();
+        $vehicle_count = Vehicle::count();
 
-        return view('welcome', ['Articles' => $Articles, 'Orders' => $Orders, 'Vehicles' => $Vehicles]);
+        return view('welcome', ['orders_count' => $orders_count, 'vehicle_count' => $vehicle_count]);
     }
 }

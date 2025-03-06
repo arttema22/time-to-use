@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->timestamps();
             $table->softDeletes();
-            $table->foreignId('user_id')->index();
+            //  $table->foreignId('user_id')->index();
             $table->boolean('flag_activity')->default(1);
             $table->dateTime('date_time_order');
             $table->integer('qnty_places')->nullable();
