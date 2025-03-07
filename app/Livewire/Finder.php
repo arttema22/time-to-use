@@ -16,7 +16,7 @@ class Finder extends Component
         $flag_shower = 0, $flag_fridge = 0, $flag_kitchen = 0,
         $flag_audio = 0, $flag_tv = 0, $flag_open_deck = 0,
         $flag_flybridge = 0;
-
+    public $vehicles_count = 0;
     public $registerForm = false;
     public $authForm = true;
     public $userModal = false;
@@ -71,21 +71,21 @@ class Finder extends Component
                 'flag_flybridge' => 'boolean'
             ]);
 
-            $vehicles = Vehicle::where('flag_activity', 1)
+            $this->vehicles_count = Vehicle::where('flag_activity', 1)
                 //  ->where('cat_id', '>=', $this->cat_id)
                 ->where('qnty_places', '>=', $this->qnty_places)
                 ->where('qnty_siutes', '>=', $this->qnty_siutes)
                 ->where('qnty_toilets', '>=', $this->qnty_toilets)
-                ->where('flag_shower', '=', $this->flag_shower)
-                ->where('flag_fridge', '=', $this->flag_fridge)
-                ->where('flag_kitchen', '=', $this->flag_kitchen)
-                ->where('flag_audio', '=', $this->flag_audio)
-                ->where('flag_tv', '=', $this->flag_tv)
-                ->where('flag_open_deck', '=', $this->flag_open_deck)
-                ->where('flag_flybridge', '=', $this->flag_flybridge)
-                ->get();
+                // ->where('flag_shower', '=', $this->flag_shower)
+                // ->where('flag_fridge', '=', $this->flag_fridge)
+                // ->where('flag_kitchen', '=', $this->flag_kitchen)
+                // ->where('flag_audio', '=', $this->flag_audio)
+                // ->where('flag_tv', '=', $this->flag_tv)
+                // ->where('flag_open_deck', '=', $this->flag_open_deck)
+                // ->where('flag_flybridge', '=', $this->flag_flybridge)
+                ->count();
 
-            dd($vehicles);
+            //            dd($this->vehicles_count);
         } else {
             $this->toggleUserModal();
             return;
